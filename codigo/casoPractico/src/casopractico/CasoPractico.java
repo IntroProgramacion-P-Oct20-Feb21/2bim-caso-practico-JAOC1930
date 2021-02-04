@@ -66,7 +66,9 @@ public class CasoPractico {
                     }
                 }
             }
-            contador = contador + 1;
+            if ((opcion >= 1) && (opcion <= 7)){
+                contador = contador + 1;
+            }
             entrada.nextLine();
             System.out.println("Ponga si para dejar de crear cuentas");
             sa = entrada.nextLine();
@@ -75,8 +77,9 @@ public class CasoPractico {
                 bandera = false;
             }
         }
-        System.out.printf(facebook + whatsapp + signal + flickr);
-        obtenerMensaje(contador);
+        System.out.println(facebook + whatsapp + signal + flickr);
+        String cadena = obtenerMensaje(contador);
+        System.out.println(cadena);
     }
     public static String crearFacebook(){
         Scanner entrada = new Scanner(System.in);
@@ -97,7 +100,7 @@ public class CasoPractico {
         pais = entrada.nextLine();
         System.out.println("Ingrese su correo");
         correo = entrada.nextLine();
-        cadena = String.format("%s\tFacebook\nUsuario: %s\nEdad= %d\n"
+        cadena = String.format("%s\tFacebook\nUsuario: %s\nEdad: %d\n"
                 + "Ciudad: %s\nPais: %s\nCorreo: %s\n", cadena, usuario,
                 edad, ciudad, pais, correo);
         return cadena;
@@ -235,19 +238,21 @@ public class CasoPractico {
                 usuario, correo);
         return cadena;
     }
-    public static void obtenerMensaje(int nCuentas){
+    public static String obtenerMensaje(int nCuentas){
         String [] mensajeFinal = {"Campaña con poca afluencia", 
             "Campaña moderada siga adelante", "Excelente campaña"};
+        String cadena = "";
         if ((nCuentas >= 1) && (nCuentas <= 5)){
-                System.out.println(mensajeFinal[0]);
+                cadena = mensajeFinal[0];
             }else{
             if ((nCuentas >= 6) && (nCuentas <= 15)){
-                System.out.println(mensajeFinal[1]);
+                cadena = mensajeFinal[1];
             }else{
                 if (nCuentas >= 16){
-                    System.out.println(mensajeFinal[2]);
+                    cadena = mensajeFinal[2];
                 }
             }
         }
+        return cadena;
     }
 }
